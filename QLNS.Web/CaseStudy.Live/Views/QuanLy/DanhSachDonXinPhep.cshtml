@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.QuanLy.Response.DonXinPhep>
+@using CaseStudy.Live.Models.QuanLy.Request
+
+@{
+    ViewData["Title"] = "Danh sách đơn xin phép";
+    var tinhTrangList = new List<string>();
+    tinhTrangList = ViewBag.TinhTrangList;
+}
+
+<h1>Danh sách đơn xin phép</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TinhTrang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayBatDau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayKetThuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayGui)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayPhanHoi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => tinhTrangList[item.TinhTrang - 1])
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayBatDau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayKetThuc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayGui)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayPhanHoi)
+                </td>
+                <td>
+                    @Html.ActionLink("Chi tiết", "DonXinPhep", "QuanLy", new LayDonXinPhepNhanVienId() { Id = item.DonXinPhepId }, new { @class = "btn btn-outline-info" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

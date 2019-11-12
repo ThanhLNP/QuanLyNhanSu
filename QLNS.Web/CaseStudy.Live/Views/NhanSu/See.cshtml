@@ -1,0 +1,156 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.NhanSu.Response.DanhSachNhanVienTheoPhongBan>
+
+@{
+    ViewData["Title"] = "See";
+}
+
+<h1>Bộ Phận</h1>
+
+
+<p>
+    <a asp-action="ThemNhanVien" asp-controller="NhanSu"><i class="fa fa-plus-circle px-sm-2"></i>Thêm Nhân Viên Mới</a>
+</p>
+
+<form action="/" method="post">
+    <div class="row">
+        <input type="text" name="search" placeholder="Tìm Kiếm" class="form-control col-md-4" />
+        <div class="input-group-btn">
+            <input value="Tìm Kiếm" class="btn btn-primary" type="submit" asp-controller="NhanSu" asp-action="TimKiem" id="btnSearch" />
+        </div>
+    </div>
+</form>
+<table id="tblStaff" class="table">
+    <thead>
+        <tr class="staff">
+            <th hidden>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.Ho)
+            </th>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GioiTinhStr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoDienThoai)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td hidden>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td hidden>
+                    @Html.DisplayFor(modelItem => item.Ho)
+                </td>
+                <td hidden>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td hidden>
+                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GioiTinhStr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoDienThoai)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink(" Phép Năm", "CapPhepNam", "NhanSu", new { id = item.Id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Sửa", "SuaThongTinNhanVien", "NhanSu", new { id = item.Id }, new { @class = "btn btn-secondary" })
+                    @Html.ActionLink("Trạng Thái", "ThongKe", "NhanSu", new { id = item.Id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Chi Tiết", "ThongTinNhanVien", "NhanVien", new { id = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Xóa", "XoaNhanVien", "NhanSu", new { id = item.Id }, new { @class = "btn btn-danger", onClick = "return confirm('Bạn có chắc chắn muốn xóa?' ) " })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*@section Scripts
+    {
+        <script type="text/javascript">
+
+        $(function () {
+            LoadData();
+            $("#btnSearch").click(function () {
+                //alert("");
+                var staff = {};
+                staff.HoTen = $("#HoTen").val();
+                 staff.GioiTinhStr = $("#GioiTinhStr").val();
+                 staff.Email = $("#Email").val();
+                staff.SoDienThoai   = $("#SoDienThoai").val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("TimKiem")',
+                    data: '{staff: ' + JSON.stringify(staff) + '}',
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function () {
+                       // alert("Data has been added successfully.");
+                        LoadData();
+                    },
+                    error: function () {
+                        alert("Error while inserting data");
+                    }
+                });
+                return false;
+            });
+        });
+
+        function LoadData() {
+            $("#tblStaff").remove();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("danhsachnhanvientheobophan")',
+                dataType: 'json',
+                data: { id: '' },
+                success: function (data) {
+                    var items = '';
+                    $.each(data, function (i, item) {
+                        var rows = "<tr>"
+                            + "<tr class='staff'>" + item.HoTen + "</td>"
+                            + "<tr class='staff'>" + item.GioiTinhStr + "</td>"
+                            + "<tr class='staff'>" + item.Email + "</td>"
+                            + "<tr class='staff'>" + item.SoDienThoai + "</td>"
+                        + "</tr>";
+                        $('#tblStaff').append(rows);
+                    });
+                },
+                error: function (ex) {
+                    var r = jQuery.parseJSON(response.responseText);
+                    alert("Message: " + r.Message);
+                    alert("StackTrace: " + r.StackTrace);
+                    alert("ExceptionType: " + r.ExceptionType);
+                }
+            });
+            return false;
+        }
+        </script>
+    }*@

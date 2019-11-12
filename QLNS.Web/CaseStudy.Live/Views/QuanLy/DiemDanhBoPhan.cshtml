@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.QuanLy.Response.DiemDanh>
+@using CaseStudy.Live.Models.QuanLy.Request
+
+@{
+    ViewData["Title"] = "Điểm danh bộ phận";
+}
+
+<h1>Điểm danh bộ phận</h1>
+
+<hr />
+<form asp-action="" asp-controller="QuanLy">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <p>@Html.DisplayNameFor(model => model.Ngay)</p>
+    <p><input asp-for="@Model.FirstOrDefault().Ngay" class="form-control" type="date" value=@Model.FirstOrDefault().Ngay.ToString("yyyy-MM-dd")></p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoTen)
+                </th>
+                <th>
+                    Có mặt
+                </th>
+                <th>
+                    Đi trễ
+                </th>
+                <th>
+                    Vắng không phép
+                </th>
+                <th>
+                    Vắng có phép
+                </th>
+                <th>
+                    Nghỉ không lương
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbBoPhan">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.HoTen, "DiemDanhNhanVien", "QuanLy", new LayDiemDanhNhanVienId { NhanVienId = item.NhanVienId, Ngay = item.Ngay })
+                    </td>
+                    <td>
+                        <input type="radio" name=@("TrangThai" + @item.NhanVienId) value="1" @(item.TrangThai == 1 ? "checked" : "")>
+                    </td>
+                    <td>
+                        <input type="radio" name=@("TrangThai" + @item.NhanVienId) value="2" @(item.TrangThai == 2 ? "checked" : "")>
+                    </td>
+                    <td>
+                        <input type="radio" name=@("TrangThai" + @item.NhanVienId) value="3" @(item.TrangThai == 3 ? "checked" : "")>
+                    </td>
+                    <td>
+                        <input type="radio" name=@("TrangThai" + @item.NhanVienId) value="4" @(item.TrangThai == 4 ? "checked" : "")>
+                    </td>
+                    <td>
+                        <input type="radio" name=@("TrangThai" + @item.NhanVienId) value="5" @(item.TrangThai == 5 ? "checked" : "")>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @*<div class="form-group">
+        <input type="submit" value="Save" class="btn btn-outline-success" />
+    </div>*@
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/QuanLy/DiemDanhBoPhan.js"></script>
+}

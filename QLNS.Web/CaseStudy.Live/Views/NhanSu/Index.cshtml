@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.NhanSu.Response.DanhSachBoPhanViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Nhân Sự</h1>
+
+<p>
+    <a asp-controller="NhanSu" asp-action="ThemBoPhan"><i class="fa fa-plus-circle px-sm-2"></i>Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuong)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td class="col-md-auto">
+                <a asp-route-id="@item.Id" asp-controller="NhanSu" asp-action="SuaBoPhan"><i class="fa fa-wrench px-sm-2"></i></a>
+                <a asp-route-id="@item.Id" asp-controller="NhanSu" asp-action="ThongTinBoPhan"><i class="fa fa-file-text px-sm-2"></i></a>
+                <a asp-route-id="@item.Id" asp-controller="NhanSu" asp-action="XoaBoPhan"><i class="fa fa-trash-o px-sm-2" ></i></a>
+                <a asp-route-id="@item.Id" asp-controller="NhanSu" asp-action="See"><i class="fa fa-eye px-sm-2"></i></a>
+
+                @*@Html.ActionLink("Sửa", "SuaBoPhan", new { id = item.Id }, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Thông Tin", "ThongTinBoPhan", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Xóa", "XoaBoPhan", new { id = item.Id }, new { @class = "btn btn-warning", onClick = "return confirm('Bạn có chắc chắn muốn xóa?' ) " })
+                @Html.ActionLink("Xem Nhân Viên", "See", new { id = item.Id }, new { @class = "btn btn-info" })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

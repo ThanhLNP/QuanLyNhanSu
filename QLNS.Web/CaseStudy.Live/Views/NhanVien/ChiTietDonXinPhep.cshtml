@@ -1,0 +1,71 @@
+﻿@model CaseStudy.Live.Models.NhanVien.Response.DonXinPhepView
+
+@{
+    ViewData["Title"] = "ChiTietDonXinPhep";
+}
+
+
+<div>
+    <h4>Chi Tiết Đơn Xin Phép</h4>
+    <hr />
+    <dl class="row ">
+      
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.NgayBatDau)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.NgayBatDau)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.NgayKetThuc)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.NgayKetThuc)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.SoPhepConLai)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.SoPhepConLai)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.SoNgayDaNghi)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.SoNgayDaNghi)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.NgayGui)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.NgayGui)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.NgayPhanHoi)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.NgayPhanHoi)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TraLoi)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.TraLoi)
+        </dd>
+    </dl>
+</div>
+<div>
+    
+</div>

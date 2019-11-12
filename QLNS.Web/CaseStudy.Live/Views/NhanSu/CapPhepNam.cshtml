@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.NhanSu.Response.ThongTinPhepNamView>
+
+@{
+    ViewData["Title"] = "CapPhepNam";
+}
+
+<h1>Cấp Phép Năm</h1>
+
+
+ 
+
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Nam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SoPhep)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoPhep)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Cấp Phép Năm", "CapPhep", new { id = item.NhanVienId }, new { @class = "btn btn-danger" })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

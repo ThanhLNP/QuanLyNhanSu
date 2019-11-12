@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.NhanSu.Response.ThongKeNhanVien>
+
+@{
+    ViewData["Title"] = "ThongKe";
+}
+
+<h1>Thống Kê</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CoMat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhongPhep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoPhep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheoQuyDinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoPhepConLai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nam)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoMat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhongPhep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoPhep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheoQuyDinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoPhepConLai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nam)
+            </td>
+        
+        </tr>
+}
+    </tbody>
+</table>

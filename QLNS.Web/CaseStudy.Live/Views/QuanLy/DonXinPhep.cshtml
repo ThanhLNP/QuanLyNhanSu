@@ -1,0 +1,87 @@
+﻿@model CaseStudy.Live.Models.QuanLy.Response.DonXinPhep
+@using CaseStudy.Live.Models.QuanLy.Request
+
+@{
+    ViewData["Title"] = "Đơn xin phép";
+    var tinhTrangList = new List<string>();
+    tinhTrangList = ViewBag.TinhTrangList;
+}
+
+<h1>Đơn xin phép</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SuaDonXinPhepNhanVien" asp-controller="QuanLy">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="DonXinPhepId" class="form-control" hidden />
+            <input asp-for="Email" class="form-control" hidden />
+            <div class="form-group">
+                <label asp-for="HoTen" class="control-label"></label>
+                <p>@Html.DisplayFor(modelItem => modelItem.HoTen)</p>
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayBatDau" class="control-label"></label>
+                <p>@Html.DisplayFor(modelItem => modelItem.NgayBatDau)</p>
+                <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayKetThuc" class="control-label"></label>
+                <p>@Html.DisplayFor(modelItem => modelItem.NgayKetThuc)</p>
+                <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoPhepConLai" class="control-label"></label>
+                <p>@Html.DisplayFor(modelItem => modelItem.SoPhepConLai)</p>
+                <span asp-validation-for="SoPhepConLai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoNgayDaNghi" class="control-label"></label>
+                <p>@Html.DisplayFor(modelItem => modelItem.SoNgayDaNghi)</p>
+                <span asp-validation-for="SoNgayDaNghi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayGui" class="control-label"></label>
+                <p>@Html.DisplayFor(modelItem => modelItem.NgayGui)</p>
+                <span asp-validation-for="NgayGui" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayPhanHoi" class="control-label"></label>
+                <p>@Html.DisplayFor(modelItem => modelItem.NgayPhanHoi)</p>
+                <span asp-validation-for="NgayPhanHoi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GhiChu" class="control-label"></label>
+                <p>@Html.DisplayFor(modelItem => modelItem.GhiChu)</p>
+                <span asp-validation-for="GhiChu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TraLoi" class="control-label"></label>
+                <input asp-for="TraLoi" class="form-control" disabled="@(Model.TinhTrang == 2 || Model.TinhTrang == 3)" />
+                <span asp-validation-for="TraLoi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TinhTrang" class="control-label"></label>
+                <select asp-for="TinhTrang" class="form-control" disabled="@(Model.TinhTrang == 2 || Model.TinhTrang == 3)">
+                    @for (int i = 1; i < tinhTrangList.Count(); i++)
+                    {
+                        <option value="@(i+1)">@tinhTrangList[i]</option>
+                    }
+                </select>
+                <span asp-validation-for="TinhTrang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-success" disabled="@(Model.TinhTrang == 2 || Model.TinhTrang == 3)" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <p>@Html.ActionLink("Trở lại danh sách", "DanhSachDonXinPhep", "QuanLy", new LayDonXinPhepBoPhanId() { }, new { @class = "btn btn-outline-dark" })</p>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

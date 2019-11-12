@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.QuanLy.Response.ThongKe>
+@using CaseStudy.Live.Models.QuanLy.Request
+
+@{
+    ViewData["Title"] = "Thống kê nhân viên";
+}
+
+<h1>Thống kê nhân viên</h1>
+<hr />
+<div>
+    <p>@Html.ActionLink("Trở lại danh sách", "ThongKeBoPhan", "QuanLy", new LayThongKeBoPhanId() { }, new { @class = "btn btn-outline-dark" })</p>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoMat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhongPhep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoPhep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheoQuyDinh)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoMat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhongPhep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoPhep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TheoQuyDinh)
+                </td>
+                <td>
+                    @Html.ActionLink("Chi tiết", "ChiTietDiemDanh", "QuanLy", new LayDiemDanhNhanVienIdThang { NhanVienId = item.NhanVienId, Nam = item.Nam, Thang = item.Thang }, new { @class = "btn btn-outline-info" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

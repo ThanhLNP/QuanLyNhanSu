@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.NhanVien.Response.DiemDanh>
+
+@{
+    ViewData["Title"] = "ChiTietDiemDanhNhanVien";
+}
+
+<h1>Chi Tiết Điểm Danh Nhân Viên</h1>
+
+
+<table class="table table-bordered table-dark table-hover text-center">
+    <thead>
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NhanVienId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuanLyId)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Ngay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanVienId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuanLyId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

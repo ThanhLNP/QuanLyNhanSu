@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.NhanSu.Response.TimKiemNhanVien>
+
+@{
+    ViewData["Title"] = "TimKiem";
+}
+
+<h1>TimKiem</h1>
+
+<p>
+    <a asp-route-id="" asp-action="see" asp-controller="NhanSu">Quay Lại</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.Ho)
+            </th>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoDienThoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GioiTinhStr)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Ho)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinhStr)
+            </td>
+
+            <td>
+                @Html.ActionLink(" Phép Năm", "CapPhepNam", "NhanSu", new { id = item.Id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Sửa", "SuaThongTinNhanVien", "NhanSu", new { id = item.Id }, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Trạng Thái", "ThongKe", "NhanSu", new { id = item.Id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Chi Tiết", "ThongTinNhanVien", "NhanVien", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Xóa", "XoaNhanVien", "NhanSu", new { id = item.Id }, new { @class = "btn btn-danger", onClick = "return confirm('Bạn có chắc chắn muốn xóa?' ) " })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

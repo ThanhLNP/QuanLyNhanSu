@@ -1,0 +1,117 @@
+﻿@model CaseStudy.Live.Models.NhanVien.Request.DonXinPhepCreate
+
+@{
+    ViewData["Title"] = "TaoDonXinPhep";
+}
+@{
+    var dateNow = DateTime.Now.DayOfWeek;
+}
+
+
+<h4>Viết Đơn Xin Phép</h4>
+<hr />
+<form asp-controller="NhanVien" asp-action="TaoDonXinPhep">
+    <div class="row">
+        <input asp-for="NhanVienId" class="form-control" type="hidden" />
+        <input asp-for="QuanLyId" class="form-control" type="hidden" />
+        <input asp-for="Email" class="form-control" type="hidden" />
+        <input asp-for="NgayGui" class="form-control" type="hidden" />
+        <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (TempData["Success"] != null)
+            {
+                <p class="alert alert-success">@TempData["Success"]</p>
+            }
+
+        <div class="form-group">
+            <label asp-for="HoTen" class="control-label"></label>
+            <input asp-for="HoTen" class="form-control" readonly />
+            @*<p>  @Html.DisplayFor(model => model.HoTen, new { @class = "control-control" })</p>*@
+            <span asp-validation-for="HoTen" class="text-danger"></span>
+        </div>
+            <div class="form-group">
+                <label asp-for="KhongPhep" class="control-label"></label>
+                <input asp-for="KhongPhep" class="form-control"  readonly   />
+                <span asp-validation-for="KhongPhep" class="text-danger"></span>
+            </div>
+
+            <div class=" form-group" >
+                <label asp-for="NgayBatDau" class="control-label"></label>
+                <input asp-for="NgayBatDau" class="form-control" type="date" />
+                <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BoPhan" class="control-label"></label>
+                <input asp-for="BoPhan" class="form-control" readonly />
+                <span asp-validation-for="BoPhan" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Tre" class="control-label"></label>
+                <input asp-for="Tre" class="form-control"  readonly/>
+                <span asp-validation-for="Tre" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="NgayKetThuc" class="control-label"></label>
+                <input asp-for="NgayKetThuc" class="form-control" type="date"/>
+                <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label asp-for="SoPhepConLai" class="control-label"></label>
+                <input asp-for="SoPhepConLai" class="form-control" readonly />
+                <span asp-validation-for="SoPhepConLai" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group" hidden>
+                <label asp-for="NgayGui" class="control-label"></label>
+                <input asp-for="NgayGui" class="form-control" value="" />
+                <span asp-validation-for="NgayGui" class="text-danger"></span>
+
+            </div>*@
+            @*<div asp-for="NgayGui" class="input-group date" data-provide="datepicker">
+                    <label asp-for="NgayGui" class="control-label"></label>
+                    <input type="text" class="form-control">
+                    <div asp-for="NgayGui" class="input-group-addon">
+                        <span asp-validation-for="NgayGui" class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>*@
+            @*<div class="input-group date">
+                    <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                </div>*@
+
+            @*<div class="form-group">
+                    <label asp-for="SoNgayDaNghi" class="control-label"></label>
+                    <input asp-for="SoNgayDaNghi" class="form-control" />
+                    <span asp-validation-for="SoNgayDaNghi" class="text-danger"></span>
+                </div>*@
+
+            <div class="form-group">
+                <label asp-for="GhiChu" class="control-label"></label>
+                <input asp-for="GhiChu" class="form-control" />
+                <span asp-validation-for="GhiChu" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Send" class="btn btn-danger" />
+    </div>
+</form>
+
+<div>
+    <a asp-controller="NhanVien" asp-action="XemDonXinPhep" asp-route-id="@Model.NhanVienId">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

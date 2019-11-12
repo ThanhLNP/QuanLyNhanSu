@@ -1,0 +1,98 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.NhanVien.Response.ThongKe>
+@using CaseStudy.Live.Models.NhanVien.Response
+
+@{
+    ViewData["Title"] = "ThongKeNhanVien";
+}
+
+<h4>Thống Kê Nhân Viên</h4>
+
+<p>
+    
+    <a asp-controller="NhanVien" asp-action="TaoDonXinPhep" > Tạo Đơn Xin Phép</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoTen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NhanVienId)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Thang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoMat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhongPhep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoPhep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheoQuyDinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoPhepConLai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NhanVienId)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoMat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhongPhep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoPhep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TheoQuyDinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoPhepConLai)
+                </td>
+                <td>
+                    @Html.ActionLink("Xem Chi Tiết", "ChiTietDiemDanhNhanVien", "NhanVien", new { id = item.NhanVienId, nam = item.Nam, thang = item.Thang } ,new {@class= "btn btn-info" }) |
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CaseStudy.BAL.Interface\CaseStudy.BAL.Interface.csproj" />
+    <ProjectReference Include="..\CaseStudy.DAL.Interface\CaseStudy.DAL.Interface.csproj" />
+    <ProjectReference Include="..\CaseStudy.Domain\CaseStudy.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CaseStudy.Live.Models.QuanLy.Response.DiemDanh>
+@using CaseStudy.Live.Models.QuanLy.Request
+
+@{
+    ViewData["Title"] = "Chi tiết điểm danh";
+    var trangThaiList = new List<string>();
+    trangThaiList = ViewBag.TrangThaiList;
+}
+
+<h1>Chi tiết điểm danh</h1>
+<hr />
+<div>
+    <p>@Html.ActionLink("Trở lại thống kê nhân viên", "ThongKeNhanVien", "QuanLy", new LayThongKeNhanVienId() { NhanVienId = Model.FirstOrDefault().NhanVienId }, new { @class = "btn btn-outline-dark" })</p>
+    <p>@Html.ActionLink("Trở lại thống kê bộ phận", "ThongKeBoPhan", "QuanLy", new LayThongKeBoPhanId() { }, new { @class = "btn btn-outline-dark" })</p>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngay)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => trangThaiList[item.TrangThai - 1])
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngay)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
